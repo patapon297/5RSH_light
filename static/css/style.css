@@ -1,0 +1,23 @@
+ .box-btn {
+     width: 150px;
+     height: 65px;
+     margin: 10px;
+ }
+
+ .anim-btn {
+     margin: 10px;
+     height: 50px;
+     width: 300px;
+ }
+
+ #all {
+     margin: 10px;
+     height: 65px;
+     width: 96%;
+ }
+
+ .anim-form {
+     margin-top: 50px;
+ }
+
+
