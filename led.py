@@ -91,6 +91,29 @@ def lightBox(strip, color, number):
     strip.show()
 
 
+def croatia(strip):
+    lightBox(strip, Color(255,0,0), 1)
+    lightBox(strip, Color(255,0,0), 2)
+    lightBox(strip, Color(255,0,0), 3)
+    lightBox(strip, Color(255,255,255), 4)
+    lightBox(strip, Color(255,255,255), 6)
+    lightBox(strip, Color(0,0,255), 7)
+    lightBox(strip, Color(0,0,255), 8)
+    lightBox(strip, Color(0,0,255), 9)
+    n = 0;
+    for i in range(101, 114):
+        n = n+1
+        if n % 4 < 2:
+            strip.setPixelColor(i, Color(255,0,0))
+        else:
+            strip.setPixelColor(i, Color(255,255,255))
+    for i in range(150, 164):
+        n = n+1
+        if n % 4 < 2:
+            strip.setPixelColor(i, Color(255,0,0))
+        else:
+            strip.setPixelColor(i, Color(255,255,255))
+
 def clearBox(strip, number):
     lightBox(strip, Color(0, 0, 0), number)
 
@@ -237,6 +260,8 @@ def light():
             theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
         if (task == "Theater_Chase_Rainbow"):
             theaterChaseRainbow(strip, sleepTime / 4)
+        if (task == "Croatia"):
+            croatia(strip)
         if "BPM" in task:
             bpm = int(task.replace("BPM", ""));
             t.task = lasttask
