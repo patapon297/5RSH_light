@@ -91,29 +91,6 @@ def lightBox(strip, color, number):
     strip.show()
 
 
-def croatia(strip):
-    lightBox(strip, Color(255,0,0), 1)
-    lightBox(strip, Color(255,0,0), 2)
-    lightBox(strip, Color(255,0,0), 3)
-    lightBox(strip, Color(255,255,255), 4)
-    lightBox(strip, Color(255,255,255), 6)
-    lightBox(strip, Color(0,0,255), 7)
-    lightBox(strip, Color(0,0,255), 8)
-    lightBox(strip, Color(0,0,255), 9)
-    n = 0;
-    for i in range(101, 114):
-        n = n+1
-        if n % 4 < 2:
-            strip.setPixelColor(i, Color(255,0,0))
-        else:
-            strip.setPixelColor(i, Color(255,255,255))
-    for i in range(150, 164):
-        n = n+1
-        if n % 4 < 2:
-            strip.setPixelColor(i, Color(255,0,0))
-        else:
-            strip.setPixelColor(i, Color(255,255,255))
-
 def clearBox(strip, number):
     lightBox(strip, Color(0, 0, 0), number)
 
@@ -140,6 +117,7 @@ def flashWhite(strip, wait_ms=400):
 
 
 def rainbowStep(strip, wait_ms=400):
+    t = threading.current_thread()
     color = Color(0, 0, 0)
     for i in range(0, 11):
         color = getRandomColor(color)
@@ -147,9 +125,12 @@ def rainbowStep(strip, wait_ms=400):
             strip.setPixelColor(k, color)
         strip.show()
         time.sleep(wait_ms / 1000.0)
+        if t.task is not "Rainbow_Step":
+            break
 
 
 def rainbowStepBoxes(strip, wait_ms=400):
+    t = threading.current_thread()
     for j in range(0, 11):
         a = random.randint(1, 10)
         b = random.randint(1, 10)
@@ -161,10 +142,28 @@ def rainbowStepBoxes(strip, wait_ms=400):
         clearBox(strip, a)
         clearBox(strip, b)
         clearBox(strip, c)
+        if t.task is not "Rainbow_Step_Boxes":
+            break
+
+
+def rainbowStepAllBoxes(strip, wait_ms=400):
+    t = threading.current_thread()
+    for j in range(0, 11):
+        a = random.randint(1, 10)
+        b = random.randint(1, 10)
+        c = random.randint(1, 10)
+        lightBox(strip, getRandomColor(), a)
+        lightBox(strip, getRandomColor(), b)
+        lightBox(strip, getRandomColor(), c)
+        time.sleep(wait_ms / 1000.0)
+        if t.task is not "Rainbow_Step_Boxes":
+            break
+
 
 
 def theaterChase(strip, color, wait_ms=50, iterations=10):
     """Movie theater light style chaser animation."""
+    t = threading.current_thread()
     for j in range(iterations):
         for q in range(3):
             for i in range(0, strip.numPixels(), 3):
@@ -173,9 +172,12 @@ def theaterChase(strip, color, wait_ms=50, iterations=10):
             time.sleep(wait_ms / 1000.0)
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i + q, 0)
+            if t.task is not "Theater_Chase":
+                break
 
 
 def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
+    t = threading.current_thread()
     for j in range(iterations):
         for q in range(9):
             for i in range(1, 10, 9):
@@ -184,10 +186,12 @@ def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
             time.sleep(wait_ms / 1000.0)
             for i in range(1, 10, 9):
                 lightBox(strip, 0, i + q)
-
+            if t.task is not "Theater_Chase_Boxes":
+                break
 
 def wheel(pos):
     """Generate rainbow colors across 0-255 positions."""
+
     if pos < 85:
         return Color(pos * 3, 255 - pos * 3, 0)
     elif pos < 170:
@@ -209,15 +213,19 @@ def rainbowFade(strip, wait_ms=20, iterations=1):
 
 def rainbowCycle(strip, wait_ms=20, iterations=5):
     """Draw rainbow that uniformly distributes itself across all pixels."""
+    t = threading.current_thread()
     for j in range(256 * iterations):
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
         strip.show()
         time.sleep(wait_ms / 1000.0)
+        if t.task is not "Rainbow_Cycle":
+            break
 
 
 def theaterChaseRainbow(strip, wait_ms=50):
     """Rainbow movie theater light style chaser animation."""
+    t = threading.current_thread()
     for j in range(16):
         for q in range(3):
             for i in range(0, strip.numPixels(), 3):
@@ -226,6 +234,8 @@ def theaterChaseRainbow(strip, wait_ms=50):
             time.sleep(wait_ms / 1000.0)
             for i in range(0, strip.numPixels(), 3):
                 strip.setPixelColor(i + q, 0)
+            if t.task is not "Theater_Chase_Rainbow":
+                break
 
 def light():
     t = threading.current_thread()
@@ -253,15 +263,13 @@ def light():
         if (task == "Rainbow_Step"):
             rainbowStep(strip, sleepTime)
         if (task == "Rainbow_Step_Boxes"):
-            rainbowStepBoxes(strip, sleepTime)
+            rainbowStepAllBoxes(strip, sleepTime)
         if (task == "Theater_Chase"):
             theaterChase(strip, Color(255, 255, 255), sleepTime / 4, 1)
         if (task == "Theater_Chase_Boxes"):
             theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
         if (task == "Theater_Chase_Rainbow"):
             theaterChaseRainbow(strip, sleepTime / 4)
-        if (task == "Croatia"):
-            croatia(strip)
         if "BPM" in task:
             bpm = int(task.replace("BPM", ""));
             t.task = lasttask

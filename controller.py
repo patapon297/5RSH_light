@@ -22,7 +22,7 @@ class Index:
         command = web.input().keys()[0]
         if command is "BPM":
             command = command + str(web.input().BPM)
-        print (command)
+        print(command)
         t.task = command
         if not t.isAlive():
             t.start()
