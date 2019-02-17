@@ -119,11 +119,14 @@ def flashWhite(strip, wait_ms=400):
 def rainbowStep(strip, wait_ms=400):
     t = threading.current_thread()
     color = Color(0, 0, 0)
+    lastcolor = color
     for i in range(0, 11):
-        color = getRandomColor(color)
+        while color == lastcolor:
+            color = getRandomColor(color)
         for k in range(0, strip.numPixels()):
             strip.setPixelColor(k, color)
         strip.show()
+        lastcolor = color
         time.sleep(wait_ms / 1000.0)
         if t.task is not "Rainbow_Step":
             break
