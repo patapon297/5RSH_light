@@ -156,7 +156,7 @@ def rainbowStepAllBoxes(strip, wait_ms=400):
         lightBox(strip, getRandomColor(), b)
         lightBox(strip, getRandomColor(), c)
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Step_Boxes":
+        if t.task is not "Rainbow_Step_All_Boxes":
             break
 
 
@@ -263,6 +263,8 @@ def light():
         if (task == "Rainbow_Step"):
             rainbowStep(strip, sleepTime)
         if (task == "Rainbow_Step_Boxes"):
+            rainbowStepBoxes(strip, sleepTime)
+        if (task == "Rainbow_Step_All_Boxes"):
             rainbowStepAllBoxes(strip, sleepTime)
         if (task == "Theater_Chase"):
             theaterChase(strip, Color(255, 255, 255), sleepTime / 4, 1)
