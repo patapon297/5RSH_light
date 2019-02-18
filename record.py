@@ -16,7 +16,7 @@ def record():
                     channels=CHANNELS,
                     rate=RATE,
                     input=True,
-                    output=True,
+                    output=False,
                     frames_per_buffer=chunk)
 
     print "* recording"
