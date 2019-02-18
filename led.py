@@ -252,7 +252,8 @@ def light():
     strip.begin()
     bpm = 180
     lasttask = "Off"
-    t.task = "White"
+
+    colorWipe(strip, Color(255,255,255))
 
     while getattr(t, "do_run", True):
         task = getattr(t, "task")
