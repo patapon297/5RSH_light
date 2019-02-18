@@ -22,7 +22,7 @@ def record():
     print "* recording"
     frames = []
 
-    for i in range(0, 44100 / chunk * RECORD_SECONDS):
+    for i in range(0, RATE / chunk * RECORD_SECONDS):
         data = stream.read(chunk)
         frames.append(data)
         # check for silence here by comparing the level with 0 (or some threshold) for
