@@ -12,6 +12,7 @@ urls = (
 command = ""
 
 t = threading.Thread(target=light, args=())
+t.task = "White"
 t.start()
 
 class Index:

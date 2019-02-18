@@ -253,8 +253,6 @@ def light():
     bpm = 180
     lasttask = "Off"
 
-    colorWipe(strip, Color(255,255,255))
-
     while getattr(t, "do_run", True):
         task = getattr(t, "task")
         sleepTime = 60000.0 / bpm
