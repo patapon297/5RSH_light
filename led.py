@@ -240,6 +240,9 @@ def theaterChaseRainbow(strip, wait_ms=50):
             if t.task is not "Theater_Chase_Rainbow":
                 break
 
+def randomAnim():
+    t = threading.current_thread()
+
 def light():
     t = threading.current_thread()
     # Create NeoPixel object with appropriate configuration.
@@ -248,8 +251,8 @@ def light():
     # Intialize the library (must be called once before other functions).
     strip.begin()
     bpm = 180
-    lasttask = "Off"
-    colorWipe(strip, Color(255,255,255))
+    lasttask = "White"
+    t.task = "White"
 
     while getattr(t, "do_run", True):
         task = getattr(t, "task")
