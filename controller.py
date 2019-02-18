@@ -12,6 +12,7 @@ urls = (
 command = ""
 
 t = threading.Thread(target=light, args=())
+t.start()
 
 class Index:
 
@@ -30,5 +31,3 @@ class Index:
     if __name__ == "__main__":
         web.app = web.application(urls, globals())
         web.app.run()
-        t.task = "White"
-        t.start()
