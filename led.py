@@ -252,6 +252,7 @@ def light():
     strip.begin()
     bpm = 180
     lasttask = "Off"
+    t.task = "White"
 
     while getattr(t, "do_run", True):
         task = getattr(t, "task")

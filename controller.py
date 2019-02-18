@@ -2,6 +2,7 @@ import web
 import threading
 from led import light
 
+
 render = web.template.render('templates/')
 
 urls = (
@@ -11,7 +12,6 @@ urls = (
 command = ""
 
 t = threading.Thread(target=light, args=())
-t.task = "White"
 
 class Index:
 
