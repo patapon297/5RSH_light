@@ -135,9 +135,4 @@ def detect_bpm():
 
         bpm = numpy.median(bpms)
         print 'Completed.  Estimated Beats Per Minute:', bpm
-
-        n = range(0,len(correl))
-        plt.plot(n,abs(correl))
-        plt.show()#plot non-blocking
-        plt.close()
         return bpm
