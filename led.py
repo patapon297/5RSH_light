@@ -2,6 +2,8 @@ import time
 from neopixel import *
 import threading
 import random
+from record import record
+from bpm import detect_bpm
 
 # LED strip configuration:
 LED_COUNT = 266  # Number of LED pixels.
@@ -243,6 +245,15 @@ def theaterChaseRainbow(strip, wait_ms=50):
 def randomAnim():
     t = threading.current_thread()
 
+def detectBPM():
+    t = threading.current_thread()
+    while 1:
+        record()
+        bpm = detect_bpm()
+        print("bpm: " + str(bpm))
+        t.bpm = int(bpm)
+
+
 def light():
     t = threading.current_thread()
     # Create NeoPixel object with appropriate configuration.
@@ -250,10 +261,13 @@ def light():
                               LED_STRIP)
     # Intialize the library (must be called once before other functions).
     strip.begin()
-    bpm = 180
     lasttask = "Off"
+    t2 = threading.Thread(target=detectBPM(),args=())
+    t2.bpm = 180
+    t2.start()
 
     while getattr(t, "do_run", True):
+        bpm = t2.bpm
         task = getattr(t, "task")
         sleepTime = 60000.0 / bpm
         if (task == "Rainbow_Fade"):
