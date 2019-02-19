@@ -2,10 +2,10 @@ import pyaudio
 import sys
 import wave
 
-chunk = 512
+chunk = 256
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
-RATE = 44100
+RATE = 48000
 RECORD_SECONDS = 7
 
 def record():
@@ -21,19 +21,21 @@ def record():
 
     print "* recording"
     frames = []
-
-    for i in range(0, RATE / chunk * RECORD_SECONDS):
-        data = stream.read(chunk)
+   
+    for i in range(0, RATE / chunk * RECORD_SECONDS):      
+        data = stream.read(chunk, exception_on_overflow = False)
         frames.append(data)
-        # check for silence here by comparing the level with 0 (or some threshold) for
-        # the contents of data.
-        # then write data or not to a file
+
+    # check for silence here by comparing the level with 0 (or some threshold) for
+    # the contents of data.
+    # then write data or not to a file
 
     print "* done"
 
     stream.stop_stream()
     stream.close()
     p.terminate()
+    
 
     waveFile = wave.open("test.wav", 'wb')
     waveFile.setnchannels(CHANNELS)

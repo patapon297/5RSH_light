@@ -252,6 +252,7 @@ def detectBPM():
         bpm = detect_bpm()
         print("bpm: " + str(bpm))
         t.bpm = int(bpm)
+        time.sleep(1)
 
 
 def light():
@@ -262,8 +263,9 @@ def light():
     # Intialize the library (must be called once before other functions).
     strip.begin()
     lasttask = "Off"
-    t2 = threading.Thread(target=detectBPM(),args=())
-    t2.bpm = 180
+    t2 = threading.Thread(target=detectBPM,args=())
+    t2.daemon = True
+    t2.bpm = 120
     t2.start()
 
     while getattr(t, "do_run", True):

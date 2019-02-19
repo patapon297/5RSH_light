@@ -101,38 +101,37 @@ def bpm_detector(data,fs):
 
 
 def detect_bpm():
-    while 1:
-        samps,fs = read_wav("test.wav")
-        window = 3
-        data = []
-        correl=[]
-        bpm = 0
-        n=0;
-        nsamps = len(samps)
-        window_samps = int(window*fs)
-        samps_ndx = 0;  #first sample in window_ndx
-        max_window_ndx = nsamps / window_samps;
-        bpms = numpy.zeros(max_window_ndx)
+    samps,fs = read_wav("test.wav")
+    window = 3
+    data = []
+    correl=[]
+    bpm = 0
+    n=0;
+    nsamps = len(samps)
+    window_samps = int(window*fs)
+    samps_ndx = 0;  #first sample in window_ndx
+    max_window_ndx = nsamps / window_samps;
+    bpms = numpy.zeros(max_window_ndx)
 
-        #iterate through all windows
-        for window_ndx in xrange(0,max_window_ndx):
+    #iterate through all windows
+    for window_ndx in xrange(0,max_window_ndx):
 
-            #get a new set of samples
-            #print n,":",len(bpms),":",max_window_ndx,":",fs,":",nsamps,":",samps_ndx
-            data = samps[samps_ndx:samps_ndx+window_samps]
-            if not ((len(data) % window_samps) == 0):
-                raise AssertionError( str(len(data) ) )
+        #get a new set of samples
+        #print n,":",len(bpms),":",max_window_ndx,":",fs,":",nsamps,":",samps_ndx
+        data = samps[samps_ndx:samps_ndx+window_samps]
+        if not ((len(data) % window_samps) == 0):
+            raise AssertionError( str(len(data) ) )
 
-            bpm, correl_temp = bpm_detector(data,fs)
-            if bpm == None:
-                continue
-            bpms[window_ndx] = bpm
-            correl = correl_temp
+        bpm, correl_temp = bpm_detector(data,fs)
+        if bpm == None:
+            continue
+        bpms[window_ndx] = bpm
+        correl = correl_temp
 
-            #iterate at the end of the loop
-            samps_ndx = samps_ndx+window_samps
-            n=n+1 #counter for debug...
+        #iterate at the end of the loop
+        samps_ndx = samps_ndx+window_samps
+        n=n+1 #counter for debug...
 
-        bpm = numpy.median(bpms)
-        print 'Completed.  Estimated Beats Per Minute:', bpm
-        return bpm
+    bpm = numpy.median(bpms)
+    print 'Completed.  Estimated Beats Per Minute:', bpm
+    return bpm
