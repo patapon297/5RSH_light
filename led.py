@@ -122,7 +122,7 @@ def rainbowStep(strip, wait_ms=400):
     t = threading.current_thread()
     color = Color(0, 0, 0)
     lastcolor = color
-    for i in range(0, 11):
+    while True:
         while color == lastcolor:
             color = getRandomColor(color)
         for k in range(0, strip.numPixels()):
@@ -136,7 +136,7 @@ def rainbowStep(strip, wait_ms=400):
 
 def rainbowStepBoxes(strip, wait_ms=400):
     t = threading.current_thread()
-    for j in range(0, 11):
+    while True:
         a = random.randint(1, 10)
         b = random.randint(1, 10)
         c = random.randint(1, 10)
@@ -153,7 +153,7 @@ def rainbowStepBoxes(strip, wait_ms=400):
 
 def rainbowStepAllBoxes(strip, wait_ms=400):
     t = threading.current_thread()
-    for j in range(0, 11):
+    while True:
         a = random.randint(1, 10)
         b = random.randint(1, 10)
         c = random.randint(1, 10)
@@ -183,7 +183,7 @@ def theaterChase(strip, color, wait_ms=50, iterations=10):
 
 def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
     t = threading.current_thread()
-    for j in range(iterations):
+    while True:
         for q in range(9):
             for i in range(1, 10, 9):
                 lightBox(strip, color, i + q)
@@ -219,7 +219,7 @@ def rainbowFade(strip, wait_ms=20, iterations=1):
 def rainbowCycle(strip, wait_ms=20, iterations=4):
     """Draw rainbow that uniformly distributes itself across all pixels."""
     t = threading.current_thread()
-    for j in range(256 * iterations):
+    while True:
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
         strip.show()
@@ -304,7 +304,9 @@ def light():
             elif rand == 4:
                 theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
             time.sleep((sleepTime/1000) *16)
-
+            t.task = "Cancel"
+        if (task == "Cancel"):
+            t.task = "Random"
 
         if "BPM" in task:
             bpm = int(task.replace("BPM", ""));
