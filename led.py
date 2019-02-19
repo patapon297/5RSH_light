@@ -303,7 +303,7 @@ def light():
                 rainbowStepBoxes(strip, sleepTime)
             elif rand == 4:
                 theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
-            time.sleep(sleepTime *16)
+            time.sleep((sleepTime/1000) *16)
 
 
         if "BPM" in task:
