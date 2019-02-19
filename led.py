@@ -130,7 +130,7 @@ def rainbowStep(strip, wait_ms=400):
         strip.show()
         lastcolor = color
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Step" or "Random":
+        if t.task is not "Rainbow_Step" or not "Random":
             break
 
 
@@ -147,7 +147,7 @@ def rainbowStepBoxes(strip, wait_ms=400):
         clearBox(strip, a)
         clearBox(strip, b)
         clearBox(strip, c)
-        if t.task is not "Rainbow_Step_Boxes" or "Random":
+        if t.task is not "Rainbow_Step_Boxes" or not "Random":
             break
 
 
@@ -161,7 +161,7 @@ def rainbowStepAllBoxes(strip, wait_ms=400):
         lightBox(strip, getRandomColor(), b)
         lightBox(strip, getRandomColor(), c)
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Step_All_Boxes" or "Random":
+        if t.task is not "Rainbow_Step_All_Boxes" or not "Random":
             break
 
 
@@ -191,7 +191,7 @@ def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
             time.sleep(wait_ms / 1000.0)
             for i in range(1, 10, 9):
                 lightBox(strip, 0, i + q)
-            if t.task is not "Theater_Chase_Boxes" or "Random":
+            if t.task is not "Theater_Chase_Boxes" or not "Random":
                 break
 
 def wheel(pos):
@@ -224,7 +224,7 @@ def rainbowCycle(strip, wait_ms=20, iterations=4):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
         strip.show()
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Cycle" or "Random":
+        if t.task is not "Rainbow_Cycle" or not "Random":
             break
 
 
