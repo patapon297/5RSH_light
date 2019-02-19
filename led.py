@@ -130,7 +130,7 @@ def rainbowStep(strip, wait_ms=400):
         strip.show()
         lastcolor = color
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Step" or not "Random":
+        if t.task is not ("Rainbow_Step" or "Random"):
             break
 
 
@@ -147,7 +147,7 @@ def rainbowStepBoxes(strip, wait_ms=400):
         clearBox(strip, a)
         clearBox(strip, b)
         clearBox(strip, c)
-        if t.task is not "Rainbow_Step_Boxes" or not "Random":
+        if t.task is not ("Rainbow_Step_Boxes" or "Random"):
             break
 
 
@@ -161,7 +161,7 @@ def rainbowStepAllBoxes(strip, wait_ms=400):
         lightBox(strip, getRandomColor(), b)
         lightBox(strip, getRandomColor(), c)
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Step_All_Boxes" or not "Random":
+        if t.task is not ("Rainbow_Step_All_Boxes" or "Random"):
             break
 
 
@@ -191,7 +191,7 @@ def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
             time.sleep(wait_ms / 1000.0)
             for i in range(1, 10, 9):
                 lightBox(strip, 0, i + q)
-            if t.task is not "Theater_Chase_Boxes" or not "Random":
+            if t.task is not ("Theater_Chase_Boxes" or "Random"):
                 break
 
 def wheel(pos):
@@ -224,7 +224,7 @@ def rainbowCycle(strip, wait_ms=20, iterations=4):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
         strip.show()
         time.sleep(wait_ms / 1000.0)
-        if t.task is not "Rainbow_Cycle" or not "Random":
+        if t.task is not ("Rainbow_Cycle" or "Random"):
             break
 
 
@@ -303,9 +303,9 @@ def light():
                 rainbowStepBoxes(strip, sleepTime)
             elif rand == 4:
                 theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
-            time.sleep((sleepTime/1000) *16)
+            time.sleep((sleepTime/1000) * 16)
             t.task = "Cancel"
-        if (task == "Cancel"):
+        if task == "Cancel":
             t.task = "Random"
 
         if "BPM" in task:
