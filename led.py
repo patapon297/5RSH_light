@@ -122,7 +122,7 @@ def rainbowStep(strip, wait_ms=400):
     t = threading.current_thread()
     color = Color(0, 0, 0)
     lastcolor = color
-    while True:
+    for i in range(0, 11):
         while color == lastcolor:
             color = getRandomColor(color)
         for k in range(0, strip.numPixels()):
@@ -130,13 +130,13 @@ def rainbowStep(strip, wait_ms=400):
         strip.show()
         lastcolor = color
         time.sleep(wait_ms / 1000.0)
-        if t.task is not ("Rainbow_Step" or "Random"):
+        if t.task is not "Rainbow_Step":
             break
 
 
 def rainbowStepBoxes(strip, wait_ms=400):
     t = threading.current_thread()
-    while True:
+    for j in range(0, 11):
         a = random.randint(1, 10)
         b = random.randint(1, 10)
         c = random.randint(1, 10)
@@ -147,13 +147,13 @@ def rainbowStepBoxes(strip, wait_ms=400):
         clearBox(strip, a)
         clearBox(strip, b)
         clearBox(strip, c)
-        if t.task is not ("Rainbow_Step_Boxes" or "Random"):
+        if t.task is not "Rainbow_Step_Boxes":
             break
 
 
 def rainbowStepAllBoxes(strip, wait_ms=400):
     t = threading.current_thread()
-    while True:
+    for j in range(0, 11):
         a = random.randint(1, 10)
         b = random.randint(1, 10)
         c = random.randint(1, 10)
@@ -161,7 +161,7 @@ def rainbowStepAllBoxes(strip, wait_ms=400):
         lightBox(strip, getRandomColor(), b)
         lightBox(strip, getRandomColor(), c)
         time.sleep(wait_ms / 1000.0)
-        if t.task is not ("Rainbow_Step_All_Boxes" or "Random"):
+        if t.task is not "Rainbow_Step_All_Boxes":
             break
 
 
@@ -183,7 +183,7 @@ def theaterChase(strip, color, wait_ms=50, iterations=10):
 
 def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
     t = threading.current_thread()
-    while True:
+    for j in range(iterations):
         for q in range(9):
             for i in range(1, 10, 9):
                 lightBox(strip, color, i + q)
@@ -191,7 +191,7 @@ def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
             time.sleep(wait_ms / 1000.0)
             for i in range(1, 10, 9):
                 lightBox(strip, 0, i + q)
-            if t.task is not ("Theater_Chase_Boxes" or "Random"):
+            if t.task is not "Theater_Chase_Boxes":
                 break
 
 def wheel(pos):
@@ -216,15 +216,15 @@ def rainbowFade(strip, wait_ms=20, iterations=1):
         time.sleep(wait_ms / 1000.0)
 
 
-def rainbowCycle(strip, wait_ms=20, iterations=4):
+def rainbowCycle(strip, wait_ms=20, iterations=5):
     """Draw rainbow that uniformly distributes itself across all pixels."""
     t = threading.current_thread()
-    while True:
+    for j in range(256 * iterations):
         for i in range(strip.numPixels()):
             strip.setPixelColor(i, wheel((int(i * 256 / strip.numPixels()) + j) & 255))
         strip.show()
         time.sleep(wait_ms / 1000.0)
-        if t.task is not ("Rainbow_Cycle" or "Random"):
+        if t.task is not "Rainbow_Cycle":
             break
 
 
@@ -291,26 +291,6 @@ def light():
             theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
         if (task == "Theater_Chase_Rainbow"):
             theaterChaseRainbow(strip, sleepTime / 4)
-        if (task == "Random"):
-            rand = random.randint(0,4)
-            if rand == 0:
-                rainbowStep(strip, sleepTime)
-            elif rand == 1:
-                rainbowCycle(strip, sleepTime / 256)
-            elif rand == 2:
-                rainbowStepAllBoxes(strip, sleepTime)
-            elif rand == 3:
-                rainbowStepBoxes(strip, sleepTime)
-            elif rand == 4:
-                theaterChaseBoxes(strip, Color(255, 255, 255), sleepTime / 4, 1)
-            time.sleep((sleepTime/1000) * 16)
-            t.task = "Cancel"
-        if task == "Cancel":
-            t.task = "Random"
-
-        if "BPM" in task:
-            bpm = int(task.replace("BPM", ""));
-            t.task = lasttask
         if "RGB" in task:
             rgb = task.replace("RGB", "").split(",")
             colorWipe(strip, Color(int(rgb[0]), int(rgb[1]), int(rgb[2])))
