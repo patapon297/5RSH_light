@@ -21,12 +21,14 @@ class Index:
 
     def POST(self):
         command = web.input().keys()[0]
-        if command is "BPM":
-            command = command + str(web.input().BPM)
+
         print(command)
         t.task = command
         if not t.isAlive():
             t.start()
+        t.do_run = True
+        if command is "Off":
+            t.do_run = False
 
     if __name__ == "__main__":
         web.app = web.application(urls, globals())
