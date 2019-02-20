@@ -12,7 +12,7 @@ urls = (
 command = ""
 
 t = threading.Thread(target=light, args=())
-t.start()
+
 
 class Index:
 
@@ -25,9 +25,7 @@ class Index:
         print(command)
         t.task = command
         if not t.isAlive():
-            t.do_run = True
-        if command is "Off":
-            t.do_run = False
+            t.start()
 
     if __name__ == "__main__":
         web.app = web.application(urls, globals())

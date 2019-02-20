@@ -245,7 +245,7 @@ def theaterChaseRainbow(strip, wait_ms=50):
 
 def detectBPM():
     t = threading.current_thread()
-    while 1:
+    while getattr(t, "do_run", True):
         record()
         bpm = detect_bpm()
         print("bpm: " + str(bpm))
@@ -273,6 +273,7 @@ def light():
             rainbowFade(strip, sleepTime / 256)
         if (task == "Off"):
             colorWipe(strip, Color(0, 0, 0))
+            t2.do_run = False
         if (task == "White"):
             colorWipe(strip, Color(255, 255, 255))
         if (task == "Flash_White"):
