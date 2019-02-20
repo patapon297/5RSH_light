@@ -260,7 +260,7 @@ def light():
     # Intialize the library (must be called once before other functions).
     strip.begin()
     lasttask = "Off"
-    t2 = threading.Thread(target=detectBPM,args=())
+    t2 = threading.Thread(target=detectBPM, args=())
     t2.daemon = True
     t2.bpm = 120
     t2.start()
