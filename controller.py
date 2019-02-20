@@ -12,8 +12,7 @@ urls = (
 command = ""
 
 t = threading.Thread(target=light, args=())
-t.start()
-t.task = "Off"
+
 
 class Index:
 
@@ -22,10 +21,10 @@ class Index:
 
     def POST(self):
         command = web.input().keys()[0]
-
         print(command)
         t.task = command
-
+        if not t.isAlive():
+            t.start()
 
     if __name__ == "__main__":
         web.app = web.application(urls, globals())
