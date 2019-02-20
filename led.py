@@ -267,6 +267,7 @@ def light():
 
     while getattr(t, "do_run", True):
         bpm = t2.bpm
+        t2.do_run = True
         task = getattr(t, "task")
         sleepTime = 60000.0 / bpm
         if (task == "Rainbow_Fade"):
