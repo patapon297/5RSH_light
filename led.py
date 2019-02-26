@@ -298,10 +298,8 @@ def countdown(strip, wait_ms=1000):
             lightBox(strip, 16)
             lightBox(strip, 17)
             lightBox(strip, 18)
-
-
-
-    if t.task is not "Countdown":
+        time.sleep(wait_ms)
+        if t.task is not "Countdown":
             break
 
 def rainbowStep(strip, wait_ms=400):
