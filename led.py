@@ -451,6 +451,8 @@ def light():
     t2.start()
 
     while getattr(t, "do_run", True):
+        for k in range(strip.numPixels()):
+            strip.setPixelColor(k, Color(0))
         bpm = t2.bpm
         task = getattr(t, "task")
         sleepTime = 60000.0 / bpm
