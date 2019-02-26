@@ -1,6 +1,7 @@
 import pyaudio
 import sys
 import wave
+import cStringIO as StringIO
 
 chunk = 256
 FORMAT = pyaudio.paInt16
@@ -35,11 +36,12 @@ def record():
     stream.stop_stream()
     stream.close()
     p.terminate()
-    
 
-    waveFile = wave.open("test.wav", 'wb')
+    memory_file = StringIO.StringIO()
+    waveFile = wave.open(memory_file, 'wb')
     waveFile.setnchannels(CHANNELS)
     waveFile.setsampwidth(p.get_sample_size(FORMAT))
     waveFile.setframerate(RATE)
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
+    return memory_file

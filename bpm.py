@@ -100,8 +100,8 @@ def bpm_detector(data,fs):
     return bpm,correl
 
 
-def detect_bpm():
-    samps,fs = read_wav("test.wav")
+def detect_bpm(wav):
+    samps,fs = read_wav(wav)
     window = 3
     data = []
     correl=[]
