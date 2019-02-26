@@ -160,6 +160,149 @@ def flashWhite(strip, wait_ms=400):
         strip.show()
         time.sleep(wait_ms / 1000)
 
+def countdown(strip, wait_ms=1000):
+    t = threading.current_thread()
+    for j in range(0, 10):
+        if j == 9:
+            lightBox(strip, 13)
+            lightBox(strip, 14)
+            lightBox(strip, 15)
+            lightBox(strip, 9)
+            lightBox(strip, 3)
+            lightBox(strip, 2)
+            lightBox(strip, 1)
+            lightBox(strip, 7)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 12)
+            lightBox(strip, 18)
+
+        if j == 8:
+            lightBox(strip, 13)
+            lightBox(strip, 14)
+            lightBox(strip, 15)
+            lightBox(strip, 9)
+            lightBox(strip, 3)
+            lightBox(strip, 2)
+            lightBox(strip, 1)
+            lightBox(strip, 7)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 12)
+            lightBox(strip, 18)
+            lightBox(strip, 17)
+            lightBox(strip, 16)
+
+        if j == 7:
+            lightBox(strip, 13)
+            lightBox(strip, 3)
+            lightBox(strip, 2)
+            lightBox(strip, 1)
+            lightBox(strip, 7)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+
+        if j == 6:
+            lightBox(strip, 13)
+            lightBox(strip, 9)
+            lightBox(strip, 3)
+            lightBox(strip, 2)
+            lightBox(strip, 1)
+            lightBox(strip, 7)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 12)
+            lightBox(strip, 18)
+            lightBox(strip, 16)
+            lightBox(strip, 17)
+            lightBox(strip, 10)
+
+        if j == 5:
+            lightBox(strip, 1)
+            lightBox(strip, 7)
+            lightBox(strip, 13)
+            lightBox(strip, 14)
+            lightBox(strip, 15)
+            lightBox(strip, 9)
+            lightBox(strip, 3)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 12)
+            lightBox(strip, 18)
+        if j == 4:
+            lightBox(strip, 1)
+            lightBox(strip, 2)
+            lightBox(strip, 3)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 9)
+            lightBox(strip, 13)
+            lightBox(strip, 14)
+            lightBox(strip, 15)
+
+        if j == 3:
+            lightBox(strip, 1)
+            lightBox(strip, 2)
+            lightBox(strip, 3)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 7)
+            lightBox(strip, 9)
+            lightBox(strip, 12)
+            lightBox(strip, 13)
+            lightBox(strip, 15)
+            lightBox(strip, 18)
+
+
+        if j == 2:
+            lightBox(strip, 13)
+            lightBox(strip, 7)
+            lightBox(strip, 1)
+            lightBox(strip, 2)
+            lightBox(strip, 3)
+            lightBox(strip, 9)
+            lightBox(strip, 15)
+            lightBox(strip, 16)
+            lightBox(strip, 17)
+            lightBox(strip, 18)
+            lightBox(strip, 12)
+            lightBox(strip, 6)
+
+        if j == 1:
+            lightBox(strip, 7)
+            lightBox(strip, 8)
+            lightBox(strip, 9)
+            lightBox(strip, 10)
+            lightBox(strip, 11)
+            lightBox(strip, 12)
+
+        if j == 0:
+            lightBox(strip, 1)
+            lightBox(strip, 2)
+            lightBox(strip, 3)
+            lightBox(strip, 4)
+            lightBox(strip, 5)
+            lightBox(strip, 6)
+            lightBox(strip, 7)
+            lightBox(strip, 12)
+            lightBox(strip, 13)
+            lightBox(strip, 14)
+            lightBox(strip, 15)
+            lightBox(strip, 16)
+            lightBox(strip, 17)
+            lightBox(strip, 18)
+
+
+
+    if t.task is not "Countdown":
+            break
 
 def rainbowStep(strip, wait_ms=400):
     t = threading.current_thread()
@@ -327,6 +470,8 @@ def light():
             rainbowStepBoxes(strip, sleepTime)
         if (task == "Rainbow_Step_All_Boxes"):
             rainbowStepAllBoxes(strip, sleepTime)
+        if (task == "Countdown"):
+            countdown(strip, sleepTime*2)
         if (task == "Theater_Chase"):
             theaterChase(strip, Color(255, 255, 255), sleepTime / 4, 1)
         if (task == "Theater_Chase_Boxes"):
