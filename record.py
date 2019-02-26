@@ -44,5 +44,4 @@ def record():
     waveFile.setframerate(RATE)
     waveFile.writeframes(''.join(frames))
     waveFile.close()
-    memory_file.close()
     return memory_file
