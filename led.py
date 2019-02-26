@@ -299,7 +299,7 @@ def countdown(strip, wait_ms=1000):
             lightBox(strip, color,  16)
             lightBox(strip, color,  17)
             lightBox(strip, color,  18)
-        time.sleep(wait_ms)
+        time.sleep(wait_ms/1000)
         for k in range(strip.numPixels()):
             strip.setPixelColor(k, Color(0,0,0))
         if t.task is not "Countdown":
