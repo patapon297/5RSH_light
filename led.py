@@ -227,12 +227,12 @@ def theaterChase(strip, color, wait_ms=50, iterations=10):
 def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
     t = threading.current_thread()
     for j in range(iterations):
-        for q in range(9):
-            for i in range(1, 19):
+        for q in range(18):
+            for i in range(1, 19, 18):
                 lightBox(strip, color, i + q)
             strip.show()
             time.sleep(wait_ms / 1000.0)
-            for i in range(1, 19):
+            for i in range(1, 19, 18):
                 lightBox(strip, 0, i + q)
             if t.task is not "Theater_Chase_Boxes":
                 break
