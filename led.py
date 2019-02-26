@@ -162,7 +162,7 @@ def flashWhite(strip, wait_ms=400):
 
 def countdown(strip, wait_ms=1000):
     t = threading.current_thread()
-    color = Co
+    color = Color(255,255,255)
     for j in range(0, 10):
         if j == 9:
             lightBox(strip, color,  13)
@@ -300,6 +300,8 @@ def countdown(strip, wait_ms=1000):
             lightBox(strip, color,  17)
             lightBox(strip, color,  18)
         time.sleep(wait_ms)
+        for k in range(strip.numPixels()):
+            strip.setPixelColor(k, Color(0,0,0))
         if t.task is not "Countdown":
             break
 
