@@ -488,6 +488,6 @@ def light():
             lightBox(strip, Color(int(rgbB[0]), int(rgbB[1]), int(rgbB[2])), int(rgbB[3]))
 
         lasttask = task
-        time.sleep(0.01)
+        time.sleep(0.5)
     print ("stopped")
 
