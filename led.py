@@ -10,7 +10,7 @@ LED_COUNT = 266  # Number of LED pixels.
 LED_PIN = 12  # GPIO pin connected to the pixels (18 uses PWM!).
 LED_FREQ_HZ = 800000  # LED signal frequency in hertz (usually 800khz)
 LED_DMA = 10  # DMA channel to use for generating signal (try 10)
-LED_BRIGHTNESS = 255  # Set to 0 for darkest and 255 for brightest
+LED_BRIGHTNESS = 128  # Set to 0 for darkest and 255 for brightest
 LED_INVERT = False  # True to invert the signal (when using NPN transistor level shift)
 LED_CHANNEL = 0  # set to '1' for GPIOs 13, 19, 41, 45 or 53
 LED_STRIP = ws.WS2811_STRIP_GRB
@@ -50,47 +50,89 @@ def getRandomColor(exceptCol=Color(0, 0, 0)):
 
 def lightBox(strip, color, number):
     if (number == 18):
-        for i in range(0, 3):
+        for i in range(0, 4):
             strip.setPixelColor(i, color)
-        for i in range(79, 85):
+        for i in range(80, 87):
             strip.setPixelColor(i, color)
     elif (number == 17):
-        for i in range(4, 10):
+        for i in range(4, 11):
             strip.setPixelColor(i, color)
-        for i in range(72, 78):
+        for i in range(73, 80):
             strip.setPixelColor(i, color)
-    elif (number == 3):
-        for i in range(0, 12):
+    elif (number == 16):
+        for i in range(11, 18):
             strip.setPixelColor(i, color)
-        for i in range(75, 88):
+        for i in range(66, 73):
             strip.setPixelColor(i, color)
-    elif (number == 4):
-        for i in range(114, 150):
+    elif (number == 15):
+        for i in range(18, 25):
             strip.setPixelColor(i, color)
-    elif (number == 5):
-        for i in range(101, 114):
+        for i in range(59, 66):
             strip.setPixelColor(i, color)
-        for i in range(150, 164):
+    elif (number == 14):
+        for i in range(25, 32):
             strip.setPixelColor(i, color)
-    elif (number == 6):
-        for i in range(88, 101):
+        for i in range(53, 59):
             strip.setPixelColor(i, color)
-        for i in range(164, 176):
+    elif (number == 13):
+        for i in range(32, 53):
             strip.setPixelColor(i, color)
-    elif (number == 7):
-        for i in range(203, 239):
+    elif (number == 12):
+        for i in range(87, 93):
             strip.setPixelColor(i, color)
-    elif (number == 8):
-        for i in range(189, 203):
+        for i in range(171, 177):
             strip.setPixelColor(i, color)
-        for i in range(239, 253):
+    elif (number == 11):
+        for i in range(93, 100):
+            strip.setPixelColor(i, color)
+        for i in range(164, 171):
+            strip.setPixelColor(i, color)
+    elif (number == 10):
+        for i in range(100, 107):
+            strip.setPixelColor(i, color)
+        for i in range(157, 164):
             strip.setPixelColor(i, color)
     elif (number == 9):
-        for i in range(176, 189):
+        for i in range(107, 114):
             strip.setPixelColor(i, color)
-        for i in range(253, 266):
+        for i in range(150, 157):
             strip.setPixelColor(i, color)
-
+    elif (number == 8):
+        for i in range(114, 121):
+            strip.setPixelColor(i, color)
+        for i in range(143, 150):
+            strip.setPixelColor(i, color)
+    elif (number == 7):
+        for i in range(121, 143):
+            strip.setPixelColor(i, color)
+    elif (number == 6):
+        for i in range(177, 184):
+            strip.setPixelColor(i, color)
+        for i in range(260, 266):
+            strip.setPixelColor(i, color)
+    elif (number == 5):
+        for i in range(184, 191):
+            strip.setPixelColor(i, color)
+        for i in range(253, 260):
+            strip.setPixelColor(i, color)
+    elif (number == 4):
+        for i in range(191, 198):
+            strip.setPixelColor(i, color)
+        for i in range(246, 253):
+            strip.setPixelColor(i, color)
+    elif (number == 3):
+        for i in range(198, 205):
+            strip.setPixelColor(i, color)
+        for i in range(239, 246):
+            strip.setPixelColor(i, color)
+    elif (number == 2):
+        for i in range(205, 212):
+            strip.setPixelColor(i, color)
+        for i in range(232, 239):
+            strip.setPixelColor(i, color)
+    elif (number == 1):
+        for i in range(212, 232):
+            strip.setPixelColor(i, color)
     strip.show()
 
 
@@ -138,9 +180,9 @@ def rainbowStep(strip, wait_ms=400):
 def rainbowStepBoxes(strip, wait_ms=400):
     t = threading.current_thread()
     for j in range(0, 11):
-        a = random.randint(1, 10)
-        b = random.randint(1, 10)
-        c = random.randint(1, 10)
+        a = random.randint(1, 19)
+        b = random.randint(1, 19)
+        c = random.randint(1, 19)
         lightBox(strip, getRandomColor(), a)
         lightBox(strip, getRandomColor(), b)
         lightBox(strip, getRandomColor(), c)
@@ -155,9 +197,9 @@ def rainbowStepBoxes(strip, wait_ms=400):
 def rainbowStepAllBoxes(strip, wait_ms=400):
     t = threading.current_thread()
     for j in range(0, 11):
-        a = random.randint(1, 10)
-        b = random.randint(1, 10)
-        c = random.randint(1, 10)
+        a = random.randint(1, 19)
+        b = random.randint(1, 19)
+        c = random.randint(1, 19)
         lightBox(strip, getRandomColor(), a)
         lightBox(strip, getRandomColor(), b)
         lightBox(strip, getRandomColor(), c)
@@ -186,11 +228,11 @@ def theaterChaseBoxes(strip, color, wait_ms=50, iterations=10):
     t = threading.current_thread()
     for j in range(iterations):
         for q in range(9):
-            for i in range(1, 10, 9):
+            for i in range(1, 19):
                 lightBox(strip, color, i + q)
             strip.show()
             time.sleep(wait_ms / 1000.0)
-            for i in range(1, 10, 9):
+            for i in range(1, 19):
                 lightBox(strip, 0, i + q)
             if t.task is not "Theater_Chase_Boxes":
                 break
