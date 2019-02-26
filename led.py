@@ -451,8 +451,6 @@ def light():
     t2.start()
 
     while getattr(t, "do_run", True):
-        for k in range(strip.numPixels()):
-            strip.setPixelColor(k, Color(0))
         bpm = t2.bpm
         task = getattr(t, "task")
         sleepTime = 60000.0 / bpm
@@ -488,6 +486,6 @@ def light():
             lightBox(strip, Color(int(rgbB[0]), int(rgbB[1]), int(rgbB[2])), int(rgbB[3]))
 
         lasttask = task
-        time.sleep(0.5)
+        time.sleep(0.01)
     print ("stopped")
 
