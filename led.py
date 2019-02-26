@@ -131,7 +131,7 @@ def lightBox(strip, color, number):
         for i in range(232, 239):
             strip.setPixelColor(i, color)
     elif (number == 1):
-        for i in range(212, 232):
+        for i in range(212, 231):
             strip.setPixelColor(i, color)
     strip.show()
 
