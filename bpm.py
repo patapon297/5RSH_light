@@ -9,7 +9,7 @@ def read_wav(filename):
 
     #open file, get metadata for audio
     try:
-        wf = wave.open(filename,'rb')
+        wf = wave.open(filename,'r')
     except IOError, e:
         print e
         return

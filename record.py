@@ -38,10 +38,11 @@ def record():
     p.terminate()
 
     memory_file = StringIO.StringIO()
-    waveFile = wave.open(memory_file, 'wb')
+    waveFile = wave.open(memory_file, 'w')
     waveFile.setnchannels(CHANNELS)
     waveFile.setsampwidth(p.get_sample_size(FORMAT))
     waveFile.setframerate(RATE)
-    waveFile.writeframes(b''.join(frames))
+    waveFile.writeframes(''.join(frames))
     waveFile.close()
+    memory_file.close()
     return memory_file
