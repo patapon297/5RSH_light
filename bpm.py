@@ -4,12 +4,13 @@ from scipy import signal
 import time
 import pdb
 import matplotlib.pyplot as plt
+import cStringIO as StringIO
 
-def read_wav(filename):
-
+def read_wav(wav_string):
+    wav = StringIO.StringIO(wav_string)
     #open file, get metadata for audio
     try:
-        wf = wave.open(filename,'r')
+        wf = wave.open(wav,'r')
     except IOError, e:
         print e
         return
