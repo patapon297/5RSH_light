@@ -52,7 +52,7 @@ def lightBox(strip, color, number):
     if (number == 18):
         for i in range(0, 4):
             strip.setPixelColor(i, color)
-        for i in range(80, 87):
+        for i in range(81, 87):
             strip.setPixelColor(i, color)
     elif (number == 17):
         for i in range(4, 11):
@@ -62,7 +62,7 @@ def lightBox(strip, color, number):
     elif (number == 16):
         for i in range(11, 18):
             strip.setPixelColor(i, color)
-        for i in range(66, 73):
+        for i in range(67, 73):
             strip.setPixelColor(i, color)
     elif (number == 15):
         for i in range(18, 25):
@@ -75,60 +75,60 @@ def lightBox(strip, color, number):
         for i in range(53, 59):
             strip.setPixelColor(i, color)
     elif (number == 13):
-        for i in range(32, 53):
+        for i in range(32, 52):
             strip.setPixelColor(i, color)
     elif (number == 12):
         for i in range(87, 93):
             strip.setPixelColor(i, color)
-        for i in range(171, 177):
+        for i in range(170, 176):
             strip.setPixelColor(i, color)
     elif (number == 11):
-        for i in range(93, 100):
+        for i in range(94, 100):
             strip.setPixelColor(i, color)
-        for i in range(164, 171):
+        for i in range(163, 170):
             strip.setPixelColor(i, color)
     elif (number == 10):
-        for i in range(100, 107):
+        for i in range(101, 107):
             strip.setPixelColor(i, color)
-        for i in range(157, 164):
+        for i in range(156, 163):
             strip.setPixelColor(i, color)
     elif (number == 9):
-        for i in range(107, 114):
+        for i in range(108, 114):
             strip.setPixelColor(i, color)
-        for i in range(150, 157):
+        for i in range(149, 156):
             strip.setPixelColor(i, color)
     elif (number == 8):
-        for i in range(114, 121):
+        for i in range(115, 121):
             strip.setPixelColor(i, color)
-        for i in range(143, 150):
+        for i in range(142, 149):
             strip.setPixelColor(i, color)
     elif (number == 7):
-        for i in range(121, 143):
+        for i in range(121, 142):
             strip.setPixelColor(i, color)
     elif (number == 6):
-        for i in range(177, 184):
+        for i in range(177, 183):
             strip.setPixelColor(i, color)
-        for i in range(260, 266):
+        for i in range(259, 266):
             strip.setPixelColor(i, color)
     elif (number == 5):
-        for i in range(184, 191):
+        for i in range(183, 190):
             strip.setPixelColor(i, color)
-        for i in range(253, 260):
+        for i in range(252, 259):
             strip.setPixelColor(i, color)
     elif (number == 4):
-        for i in range(191, 198):
+        for i in range(190, 197):
             strip.setPixelColor(i, color)
-        for i in range(246, 253):
+        for i in range(245, 252):
             strip.setPixelColor(i, color)
     elif (number == 3):
-        for i in range(198, 205):
+        for i in range(197, 204):
             strip.setPixelColor(i, color)
-        for i in range(239, 246):
+        for i in range(238, 245):
             strip.setPixelColor(i, color)
     elif (number == 2):
-        for i in range(205, 212):
+        for i in range(204, 211):
             strip.setPixelColor(i, color)
-        for i in range(232, 239):
+        for i in range(232, 238):
             strip.setPixelColor(i, color)
     elif (number == 1):
         for i in range(212, 231):
