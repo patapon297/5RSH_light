@@ -3223,6 +3223,13 @@ fieldset[disabled] .btn-neutral.active {
 .field:hover{
     cursor: pointer;
 }
+#field-all{
+    height: 30px;
+    width: 330px;
+    border: solid 1px #b5b5b5;
+    float: left;
+    text-align: center;
+}
 
 .anim-btn{
     margin: 5px;

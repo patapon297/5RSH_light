@@ -24,4 +24,9 @@ $(document).ready(function () {
         $(this).attr('name' ,rgb.replace('rgb', 'RGB').replace('(', '').replace(')', ''))
     });
 
+    $('#field-all').click(function () {
+        var rgb = demoColorPicker.color.rgbString;
+        $('.field').css('background-color', rgb);
+    });
+
 });
