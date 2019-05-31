@@ -319,6 +319,21 @@ def rainbowStep(strip, wait_ms=400):
         if t.task is not "Rainbow_Step":
             break
 
+def stepBoxes(strip, wait_ms=400):
+    t = threading.current_thread()
+    for j in range(0, 11):
+        a = random.randint(1, 19)
+        b = random.randint(1, 19)
+        c = random.randint(1, 19)
+        lightBox(strip, Color(255,255,255), a)
+        lightBox(strip, Color(255,255,255), b)
+        lightBox(strip, Color(255,255,255), c)
+        time.sleep(wait_ms / 1000.0)
+        clearBox(strip, a)
+        clearBox(strip, b)
+        clearBox(strip, c)
+        if t.task is not "Rainbow_Step_Boxes":
+            break
 
 def rainbowStepBoxes(strip, wait_ms=400):
     t = threading.current_thread()
@@ -466,6 +481,8 @@ def light():
             rainbowCycle(strip, sleepTime / 256)
         if (task == "Rainbow_Step"):
             rainbowStep(strip, sleepTime)
+        if (task == "Step_Boxes"):
+            stepBoxes(strip, sleepTime)
         if (task == "Rainbow_Step_Boxes"):
             rainbowStepBoxes(strip, sleepTime)
         if (task == "Rainbow_Step_All_Boxes"):
