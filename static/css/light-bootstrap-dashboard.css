@@ -3218,7 +3218,86 @@ fieldset[disabled] .btn-neutral.active {
     float: left;
     border: solid 1px #b5b5b5;
     margin: 2px;
+    background-blend-mode: multiply;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
+
+#field-1{
+    background-image: url(../img/kay.jpg);
+}
+
+#field-2{
+    background-image: url(../img/ines.jpg);
+}
+
+#field-3{
+    background-image: url(../img/resi.jpg);
+}
+
+#field-4{
+    background-image: url(../img/sofi.jpg);
+}
+
+#field-5{
+    background-image: url(../img/leo.jpg);
+}
+
+#field-6{
+    background-image: url(../img/fuchs.jpg);
+}
+
+#field-7{
+    background-image: url(../img/franci.jpg);
+}
+
+#field-8{
+    background-image: url(../img/chistine.jpg);
+}
+
+#field-9{
+    background-image: url(../img/evi.jpg);
+}
+
+#field-10{
+    background-image: url(../img/domi.jpg);
+}
+
+#field-11{
+    background-image: url(../img/saemi.jpg);
+}
+
+#field-12{
+    background-image: url(../img/marcus.jpg);
+}
+
+#field-13{
+    background-image: url(../img/david.jpg);
+}
+
+#field-14{
+    background-image: url(../img/tobi.jpg);
+}
+
+#field-15{
+    background-image: url(../img/kati.jpg);
+}
+
+#field-16{
+    background-image: url(../img/thomas.jpg);
+}
+
+#field-17{
+    background-image: url(../img/katya.jpg);
+}
+
+#field-18{
+     background-image: url(../img/simon.jpg);
+ }
+
+
 
 .field:hover{
     cursor: pointer;
@@ -3236,6 +3315,10 @@ fieldset[disabled] .btn-neutral.active {
     margin: 5px;
     color: #000000;
     width: 75%;
+}
+
+.field-img{
+    width: 100%;
 }
 
 
